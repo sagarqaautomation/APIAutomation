@@ -9,6 +9,7 @@ namespace APIGeneric.APIGeneric
         public RestClient setUrl(string endpoint)
         {
             var url = Path.Combine(APIGenericEnvironment.baseURL, endpoint);
+            Console.WriteLine(url);
             return new RestClient(url);
         }
 

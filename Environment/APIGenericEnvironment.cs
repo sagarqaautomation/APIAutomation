@@ -13,6 +13,7 @@ namespace APIGeneric.Environment
         public static string getPageUser = "api/users?page=2";
         public static string postPageUser = "api/users";
         public static string getUserById(string id) => $"api/users/{id}";
+        public static string getdelayUser = "api/users?delay=3";
 
     }
 

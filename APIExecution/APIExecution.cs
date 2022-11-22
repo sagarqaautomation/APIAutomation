@@ -43,7 +43,6 @@ namespace APIGeneric.APIExecution
             var jsonBody = JsonConvert.SerializeObject(postBody);
 
             var response = apiHelper.executeAPIEndPoint(APIGenericEnvironment.postPageUser, HttpVerbs.POST, jsonBody);
-            Console.WriteLine(response.Content);
             if (response.IsSuccessStatusCode)
             {
                 var postPageResponse = JsonConvert.DeserializeObject<PostPageResonse>(checkResponseContent(response));
@@ -51,7 +50,6 @@ namespace APIGeneric.APIExecution
                 Assert.AreEqual("leader", postPageResponse.Job);
                 Assert.AreNotEqual("", postPageResponse.Id);
                 responedata.Add("Id", postPageResponse.Id);
-                Console.WriteLine(responedata["Id"]);
             }
             else
             {
@@ -63,8 +61,7 @@ namespace APIGeneric.APIExecution
         [TestMethod]
         public void getUserById()
         {
-            var response = apiHelper.executeAPIEndPoint(APIGenericEnvironment.getUserById(responedata["DataId"]), HttpVerbs.GET);           
-            Console.WriteLine(response.Content);
+            var response = apiHelper.executeAPIEndPoint(APIGenericEnvironment.getUserById(responedata["DataId"]), HttpVerbs.GET);
             if (response.IsSuccessStatusCode)
             {
                 var getDataByID = JsonConvert.DeserializeObject<GetPageResponse>(checkResponseContent(response));
@@ -72,7 +69,7 @@ namespace APIGeneric.APIExecution
             }
             else
             {
-                throw new Exception(response.ErrorException.Message);
+                throw new Exception(response.ErrorException.Message + "  "+ (int)response.StatusCode);
             }
         }
 
