@@ -15,6 +15,8 @@ namespace APIGeneric.JsonProperties
         public string PerPage { get; set; }
         [JsonProperty("data")]
         public List<GetDataResponse> datavalues { get; set; }
+        [JsonProperty("dataById")]
+        public List<GetDataByID> dataByIDs { get; set; }
     }
 
     public class GetDataResponse
@@ -33,5 +35,13 @@ namespace APIGeneric.JsonProperties
         public string Job { get; set; }
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class GetDataByID
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+        [JsonProperty("email")]
+        public string Email { get; set; }
     }
 }
