@@ -24,4 +24,14 @@ namespace APIGeneric.JsonProperties
         [JsonProperty("name")]
         public string Name { get; set; }
     }
+
+    public class PostPageResonse
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("job")]
+        public string Job { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
 }

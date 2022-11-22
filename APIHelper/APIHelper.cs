@@ -1,11 +1,8 @@
 ﻿using APIGeneric.Environment;
-using APIGeneric.JsonProperties;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using RestSharp;
 
-namespace APIGeneric.APIHelper
+namespace APIGeneric.APIGeneric
 {
     public partial class APIHelper
     {
@@ -25,12 +22,11 @@ namespace APIGeneric.APIHelper
                     break;
                 case HttpVerbs.POST:
                     restRequest = new RestRequest(restClient.ToString(), Method.Post);
-                    restRequest.AddParameter(body, ParameterType.RequestBody);
-
+                    restRequest.AddBody(body);
                     break;
                 case HttpVerbs.PUT:
                     restRequest = new RestRequest(restClient.ToString(), Method.Put);
-                    restRequest.AddParameter(body, ParameterType.RequestBody);
+                    restRequest.AddBody(body);
                     break;
                 case HttpVerbs.DELETE:
                     restRequest = new RestRequest(restClient.ToString(), Method.Delete);
@@ -57,6 +53,7 @@ namespace APIGeneric.APIHelper
         }
         public string checkResponseContent(RestResponse restResponse)
         {
+            Console.WriteLine(restResponse.Content);
             return restResponse.Content;
         }
     }

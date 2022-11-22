@@ -10,7 +10,8 @@ namespace APIGeneric.Environment
     public class APIGenericEnvironment
     {
         public static string baseURL = "https://reqres.in/";
-        public static string pageUserEndpoint = "api/users?page=2";
+        public static string getPageUser = "api/users?page=2";
+        public static string postPageUser = "api/users";
 
     }
 
