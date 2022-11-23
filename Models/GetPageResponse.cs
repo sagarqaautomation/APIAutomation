@@ -16,7 +16,7 @@ namespace APIGeneric.JsonProperties
         [JsonProperty("data")]
         public List<GetDataResponse> datavalues { get; set; }
         [JsonProperty("dataById")]
-        public List<GetDataByID> dataByIDs { get; set; }
+        public GetDataByID dataByIDs { get; set; }
     }
 
     public class GetDataResponse

@@ -3,7 +3,6 @@ using APIGeneric.Environment;
 using APIGeneric.JsonProperties;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace APIGeneric.APIExecution
 {
@@ -39,6 +38,21 @@ namespace APIGeneric.APIExecution
                 name = "morpheus",
                 job = "leader"
             };
+            //{
+            //    data = new
+            //    {
+            //        id = 2,
+            //        email = "janet.weaver@reqres.in",
+            //        first_name = "janet",
+            //        last_name = "weaver",
+            //        avatar = "https=//reqres.in/img/faces/2-image.jpg"
+            //    },
+            //    support = new
+            //    {
+            //        url = "https=//reqres.in/#support-heading",
+            //        text = "to keep reqres free, contributions towards server costs are appreciated!"
+            //    }
+            //};
 
             var jsonBody = JsonConvert.SerializeObject(postBody);
 
@@ -64,12 +78,12 @@ namespace APIGeneric.APIExecution
             var response = apiHelper.executeAPIEndPoint(APIGenericEnvironment.getUserById(responedata["DataId"]), HttpVerbs.GET);
             if (response.IsSuccessStatusCode)
             {
-                var getDataByID = JsonConvert.DeserializeObject<GetPageResponse>(checkResponseContent(response));
-                Assert.AreEqual("1", getDataByID.dataByIDs[0].Id);
+                var getPageResponse = JsonConvert.DeserializeObject<GetPageResponse>(checkResponseContent(response));
+                Assert.AreEqual("1", getPageResponse.dataByIDs.Email);
             }
             else
             {
-                throw new Exception(response.ErrorException.Message + "  "+ (int)response.StatusCode);
+                throw new Exception(response.ErrorException.Message + "  " + (int)response.StatusCode);
             }
         }
 
